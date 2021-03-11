@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class BookInfo extends Component {
   render() {
+    const { title, authors, imageLinks } = this.props;
+    // console.log(authors)
     return (
       <li>
         <div className="book">
@@ -12,8 +14,7 @@ class BookInfo extends Component {
               style={{
                 width: 128,
                 height: 193,
-                backgroundImage:
-                  'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")',
+                backgroundImage: `url(${imageLinks})`
               }}
             />
             <div className="book-shelf-changer">
@@ -28,12 +29,23 @@ class BookInfo extends Component {
               </select>
             </div>
           </div>
-          <div className="book-title">To Kill a Mockingbird</div>
-          <div className="book-authors">Harper Lee</div>
+          <div className="book-title">{title}</div>
+          <div className="book-authors">{authors.map((author) => (
+                  <p key={author}>
+                      {author}
+                  </p>
+          ))}
+          </div>
         </div>
       </li>
     );
   }
+}
+
+BookInfo.propTypes = {
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.array.isRequired,
+    imageLinks: PropTypes.string.isRequired,
 }
 
 export default BookInfo;

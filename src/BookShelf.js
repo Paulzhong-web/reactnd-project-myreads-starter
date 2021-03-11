@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import PropTypes from 'prop-types';
-import BookInfo from './BookInfo';
+import PropTypes from 'prop-types';
+import BookInfo from "./BookInfo";
 
 class BookShelf extends Component {
   render() {
+    console.log(this.props.books);
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -15,28 +16,27 @@ class BookShelf extends Component {
             <h2 className="bookshelf-title">Currently Reading</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
-                <BookInfo />
-                <BookInfo />
+                {this.props.books.map((book) => (
+                  <BookInfo
+                    key={book.id}
+                    title={book.title}
+                    authors={book.authors}
+                    imageLinks={book.imageLinks.smallThumbnail}
+                  />
+                ))}
               </ol>
             </div>
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Want to Read</h2>
             <div className="bookshelf-books">
-              <ol className="books-grid">
-                <BookInfo />
-                <BookInfo />
-              </ol>
+              <ol className="books-grid">\</ol>
             </div>
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Read</h2>
             <div className="bookshelf-books">
-              <ol className="books-grid">
-                <BookInfo />
-                <BookInfo />
-                <BookInfo />
-              </ol>
+              <ol className="books-grid" />
             </div>
           </div>
         </div>
@@ -46,6 +46,10 @@ class BookShelf extends Component {
       </div>
     );
   }
+}
+
+BookShelf.propTypes = {
+    books: PropTypes.array.isRequired,
 }
 
 export default BookShelf;
