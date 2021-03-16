@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 class BookInfo extends Component {
   render() {
     const { title, authors, imageLinks } = this.props;
-    // console.log(authors)
     return (
       <li>
         <div className="book">
@@ -14,7 +13,7 @@ class BookInfo extends Component {
               style={{
                 width: 128,
                 height: 193,
-                backgroundImage: `url(${imageLinks})`
+                backgroundImage: `url(${imageLinks})`,
               }}
             />
             <div className="book-shelf-changer">
@@ -30,11 +29,10 @@ class BookInfo extends Component {
             </div>
           </div>
           <div className="book-title">{title}</div>
-          <div className="book-authors">{authors.map((author) => (
-                  <p key={author}>
-                      {author}
-                  </p>
-          ))}
+          <div className="book-authors">
+            {authors &&
+              authors.length > 0 &&
+              authors.map((author) => <p key={author}>{author}</p>)}
           </div>
         </div>
       </li>
@@ -43,9 +41,9 @@ class BookInfo extends Component {
 }
 
 BookInfo.propTypes = {
-    title: PropTypes.string.isRequired,
-    authors: PropTypes.array.isRequired,
-    imageLinks: PropTypes.string.isRequired,
-}
+  title: PropTypes.string.isRequired,
+  // authors: PropTypes.array.isRequired,
+  // imageLinks: PropTypes.string.isRequired,
+};
 
 export default BookInfo;
