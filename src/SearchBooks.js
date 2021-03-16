@@ -49,7 +49,14 @@ class SearchBooks extends Component {
             />
           </div>
         </div>
-        <div className="search-books-results">
+        <div
+          className="search-books-results"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-around",
+          }}
+        >
           <ol className="books-grid" />
           {newBooks &&
             newBooks.length > 0 &&

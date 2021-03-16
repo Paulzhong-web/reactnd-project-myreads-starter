@@ -5,7 +5,11 @@ class BookInfo extends Component {
   render() {
     const { title, authors, imageLinks } = this.props;
     return (
-      <li>
+      <li
+        style={{
+          listStyleType: "none",
+        }}
+      >
         <div className="book">
           <div className="book-top">
             <div
