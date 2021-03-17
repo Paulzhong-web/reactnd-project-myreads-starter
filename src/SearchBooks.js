@@ -50,19 +50,20 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid" />
-          {newBooks &&
-            newBooks.length > 0 &&
-            newBooks.map((newbook) => (
-              <BookInfo
-                key={newbook.id}
-                title={newbook.title}
-                authors={newbook.authors}
-                imageLinks={
-                  newbook.imageLinks && newbook.imageLinks.smallThumbnail
-                }
-              />
-            ))}
+          <ol className="books-grid">
+            {newBooks &&
+              newBooks.length > 0 &&
+              newBooks.map((newbook) => (
+                <BookInfo
+                  key={newbook.id}
+                  title={newbook.title}
+                  authors={newbook.authors}
+                  imageLinks={
+                    newbook.imageLinks && newbook.imageLinks.smallThumbnail
+                  }
+                />
+              ))}
+          </ol>
         </div>
       </div>
     );
