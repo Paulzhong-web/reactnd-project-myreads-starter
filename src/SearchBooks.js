@@ -33,7 +33,7 @@ class SearchBooks extends Component {
   render() {
     const { query, newBooks } = this.state;
     // console.log(this.state)
-    console.log(newBooks);
+    // console.log(newBooks);
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -49,14 +49,7 @@ class SearchBooks extends Component {
             />
           </div>
         </div>
-        <div
-          className="search-books-results"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-around",
-          }}
-        >
+        <div className="search-books-results">
           <ol className="books-grid" />
           {newBooks &&
             newBooks.length > 0 &&

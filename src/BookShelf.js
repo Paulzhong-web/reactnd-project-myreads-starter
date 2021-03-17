@@ -1,44 +1,42 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import BookInfo from "./BookInfo";
+// import BookInfo from "./BookInfo";
+import BookCategory from './BookCategory';
 
 class BookShelf extends Component {
   render() {
-    console.log(this.props.books);
+    // console.log(this.props.books);
+    const bookCategories = [
+        {
+            id: 1,
+            name: 'Currently Reading'
+        },
+        {
+            id: 2,
+            name: 'Want to Read'
+        },
+        {
+            id: 3,
+            name: 'Read'
+        },
+    ];
+    const { books } = this.props;
     return (
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          <div className="bookshelf">
-            <h2 className="bookshelf-title">Currently Reading</h2>
-            <div className="bookshelf-books">
-              <ol className="books-grid">
-                {this.props.books.map((book) => (
-                  <BookInfo
-                    key={book.id}
-                    title={book.title}
-                    authors={book.authors}
-                    imageLinks={book.imageLinks.smallThumbnail}
-                  />
-                ))}
-              </ol>
-            </div>
-          </div>
-          <div className="bookshelf">
-            <h2 className="bookshelf-title">Want to Read</h2>
-            <div className="bookshelf-books">
-              <ol className="books-grid">\</ol>
-            </div>
-          </div>
-          <div className="bookshelf">
-            <h2 className="bookshelf-title">Read</h2>
-            <div className="bookshelf-books">
-              <ol className="books-grid" />
-            </div>
-          </div>
+          {
+              bookCategories.map((bookCategory) => (
+                  <BookCategory 
+                    key={bookCategory.id} 
+                    name={bookCategory.name}
+                    books={books}
+                />
+              ))
+          }
         </div>
         <Link to="/search" className="open-search">
           <button>Add a book</button>
