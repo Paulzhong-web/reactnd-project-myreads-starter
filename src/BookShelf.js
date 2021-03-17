@@ -11,14 +11,17 @@ class BookShelf extends Component {
       {
         id: 1,
         name: "Currently Reading",
+        shelf: "currentlyReading",
       },
       {
         id: 2,
         name: "Want to Read",
+        shelf: "wantToRead",
       },
       {
         id: 3,
         name: "Read",
+        shelf: "read",
       },
     ];
     const { books } = this.props;
@@ -32,6 +35,7 @@ class BookShelf extends Component {
             <BookCategory
               key={bookCategory.id}
               name={bookCategory.name}
+              shelf={bookCategory.shelf}
               books={books}
             />
           ))}

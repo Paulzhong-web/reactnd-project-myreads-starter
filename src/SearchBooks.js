@@ -33,7 +33,7 @@ class SearchBooks extends Component {
   render() {
     const { query, newBooks } = this.state;
     // console.log(this.state)
-    // console.log(newBooks);
+    console.log(newBooks);
     return (
       <div className="search-books">
         <div className="search-books-bar">
