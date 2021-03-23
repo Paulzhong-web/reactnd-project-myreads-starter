@@ -1,30 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-// import BookInfo from "./BookInfo";
 import BookCategory from "./BookCategory";
 
 class BookShelf extends Component {
   render() {
-    // console.log(this.props.books);
-    const bookCategories = [
-      {
-        id: 1,
-        name: "Currently Reading",
-        shelf: "currentlyReading",
-      },
-      {
-        id: 2,
-        name: "Want to Read",
-        shelf: "wantToRead",
-      },
-      {
-        id: 3,
-        name: "Read",
-        shelf: "read",
-      },
-    ];
-    const { books } = this.props;
+    const {
+      books,
+      handleChange,
+      bookCategories,
+      getBookCategories,
+    } = this.props;
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -33,10 +19,12 @@ class BookShelf extends Component {
         <div className="list-books-content">
           {bookCategories.map((bookCategory) => (
             <BookCategory
+              getBookCategories={getBookCategories}
               key={bookCategory.id}
               name={bookCategory.name}
               shelf={bookCategory.shelf}
               books={books}
+              handleChange={handleChange}
             />
           ))}
         </div>

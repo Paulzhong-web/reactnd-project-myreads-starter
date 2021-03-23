@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import BookInfo from "./BookInfo";
+// import * as BooksAPI from './BooksAPI';
 
 class BookCategory extends Component {
   render() {
-    const { books, name, shelf } = this.props;
-    // console.log(books)
-    // console.log(shelf)
+    const { books, name, shelf, handleChange, getBookCategories } = this.props;
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{name}</h2>
@@ -18,11 +17,9 @@ class BookCategory extends Component {
                   book.shelf === shelf && (
                     <BookInfo
                       key={book.id}
-                      title={book.title}
-                      authors={book.authors}
-                      imageLinks={
-                        book.imageLinks && book.imageLinks.smallThumbnail
-                      }
+                      book={book}
+                      handleChange={handleChange}
+                      getBookCategories={getBookCategories}
                     />
                   )
               )}

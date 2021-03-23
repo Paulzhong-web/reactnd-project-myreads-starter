@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 class BookInfo extends Component {
   render() {
-    const { title, authors, imageLinks } = this.props;
+    const { book, handleChange, getBookCategories } = this.props;
+    const { title, authors, imageLinks } = this.props.book;
     return (
       <li
         style={{
@@ -17,11 +18,15 @@ class BookInfo extends Component {
               style={{
                 width: 128,
                 height: 193,
-                backgroundImage: `url(${imageLinks})`,
+                backgroundImage: `url(${imageLinks &&
+                  imageLinks.smallThumbnail})`,
               }}
             />
             <div className="book-shelf-changer">
-              <select>
+              <select
+                onChange={(event) => handleChange(event.target.value, book)}
+                value={getBookCategories(book)}
+              >
                 <option value="move" disabled>
                   Move to...
                 </option>
@@ -44,10 +49,8 @@ class BookInfo extends Component {
   }
 }
 
-BookInfo.propTypes = {
-  title: PropTypes.string.isRequired,
-  // authors: PropTypes.array.isRequired,
-  // imageLinks: PropTypes.string.isRequired,
-};
+// BookInfo.propTypes = {
+//   title: PropTypes.string.isRequired,
+// };
 
 export default BookInfo;
