@@ -37,7 +37,6 @@ class BooksApp extends React.Component {
       this.setState(() => ({
         books,
       }));
-      // console.log(books)
     });
   }
 
@@ -77,8 +76,7 @@ class BooksApp extends React.Component {
     BooksAPI.update(updatedBook, event).then((data) => {
       //update the shelf's value
       updatedBook.shelf = event;
-      // console.log(updatedBook)
-      // update the state 
+      // update the state
       // 1. filter that the book which changed the shelf
       // 2. add it back to the books array and re-render the main page
       this.setState((prevState) => ({
@@ -87,7 +85,6 @@ class BooksApp extends React.Component {
           .concat(updatedBook),
       }));
     });
-    // console.log(this.state.books)
   };
 
   render() {
@@ -100,10 +97,10 @@ class BooksApp extends React.Component {
           path="/"
           render={() => (
             <BookShelf
-              books={books}
-              handleChange={handleChange}
               bookCategories={bookCategories}
+              books={books}
               getBookCategories={getBookCategories}
+              handleChange={handleChange}
             />
           )}
         />
@@ -112,10 +109,10 @@ class BooksApp extends React.Component {
           render={() => (
             <SearchBooks
               updateQuery={updateQuery}
+              getBookCategories={getBookCategories}
               query={query}
               newBooks={newBooks}
               handleChange={handleChange}
-              getBookCategories={getBookCategories}
             />
           )}
         />
